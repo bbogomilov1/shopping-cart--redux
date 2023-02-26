@@ -14,15 +14,15 @@ const cartSlice = createSlice({
 
       if (!existingItem) {
         state.items.push({
-          itemId: newItem.id,
+          id: newItem.id,
           price: newItem.price,
           quantity: 1,
-          totalPrice: newItem.totalPrice,
-          name: newItem.name,
+          totalPrice: newItem.price,
+          name: newItem.title,
         });
       } else {
         existingItem.quantity++;
-        existingItem.price = existingItem.totalPrice + newItem.price;
+        existingItem.totalPrice += newItem.price;
       }
     },
     removeItemFromCart(state, action) {
